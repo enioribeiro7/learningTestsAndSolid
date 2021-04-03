@@ -56,5 +56,12 @@ class Calculadora extends Controller
             default;
             break;
         }
-    }    
+    }
+    
+    public static function calcular($valorA, $valorB, $operador){
+
+        $calc = new Calculadora($valorA, $valorB, $operador);
+        return $calc->getResultado();
+
+    }
 }

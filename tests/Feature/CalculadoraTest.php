@@ -97,4 +97,11 @@ class CalculadoraTest extends TestCase
         $this->assertEquals(18, $calc->getResultado(), "Erro in getResultado method"); 
 
     }
+
+    public function testStaticMethodCalcular(){
+
+        //testando um metodo estatico na class Calculadora
+        $resultado = Calculadora::calcular(2,4,"soma");
+        $this->assertEquals(6, $resultado, "Erro in static method calcular");
+    }
 }
