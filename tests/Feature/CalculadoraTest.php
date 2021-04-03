@@ -22,6 +22,9 @@ class CalculadoraTest extends TestCase
         $this->assertClassHasAttribute('resultado', Calculadora::class);
     }
 
+        /** 
+        * @depends testAttributesOfCalculadoraClass
+        */
 
     public function testVerifiedIfClassHasMethods(){
 
