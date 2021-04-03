@@ -22,9 +22,9 @@ class CalculadoraTest extends TestCase
         $this->assertClassHasAttribute('resultado', Calculadora::class);
     }
 
-        /** 
-        * @depends testAttributesOfCalculadoraClass
-        */
+    /** 
+    * @depends testAttributesOfCalculadoraClass
+    */
 
     public function testVerifiedIfClassHasMethods(){
 
@@ -37,5 +37,39 @@ class CalculadoraTest extends TestCase
 
         $this->assertTrue(method_exists(Calculadora::class,'getResultado'), 'getValorA is missing in Calculadora Class');
 
+    }
+
+    /** 
+    * @depends testAttributesOfCalculadoraClass
+    */
+    public function testIfExistContructorMethod(){
+
+        //Verifica se metodo construtor existe na classe
+        $this->assertTrue(method_exists(Calculadora::class,'__construct'), '__contruct is missing in Calculadora Class');
+    }
+
+    /** 
+    * @depends testAttributesOfCalculadoraClass
+    */
+    public function testAttributesOfContructMethod(){
+
+        //Verifica se o contruct esta atribuindo valores
+        $calc = new Calculadora(2,3,'soma');
+        $this->assertEquals(2, $calc->getValorA(), 'Error in getValorA Method');
+        $this->assertEquals(3, $calc->getValorB(), 'Error in getValorB Method'); 
+        $this->assertEquals('soma', $calc->getOperador(), 'Error in getOperador Method'); 
+        
+    }
+    
+    /** 
+    * @depends testAttributesOfCalculadoraClass
+    */    
+    public function testAccessAttributesPrivate(){
+
+        //varifica se consigo acessar os atributos privados
+        $calc = new Calculadora(2,3,'soma');
+        $this->assertFalse(isset($calc->valorA), 'Attribute valorA should be private!');
+        $this->assertFalse(isset($calc->valorB), 'Attribute valorB should be private!');
+        $this->assertFalse(isset($calc->operador), 'Attribute operador should be private!');
     }
 }
