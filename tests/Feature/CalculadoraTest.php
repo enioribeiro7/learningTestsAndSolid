@@ -72,4 +72,29 @@ class CalculadoraTest extends TestCase
         $this->assertFalse(isset($calc->valorB), 'Attribute valorB should be private!');
         $this->assertFalse(isset($calc->operador), 'Attribute operador should be private!');
     }
+    
+    
+    /** 
+     * @depends testAttributesOfContructMethod
+     */
+    public function testGetResultadoMethod(){
+        $calc = new Calculadora(4,2,"soma");
+        $this->assertEquals(6, $calc->getResultado(), "Erro in getResultado method");
+        
+        $calc = new Calculadora(6,3,"subtrair");
+        $this->assertEquals(3, $calc->getResultado(), "Erro in getResultado method");
+
+        $calc = new Calculadora(6,3,"dividi");
+        $this->assertEquals(2, $calc->getResultado(), "Erro in getResultado method");
+        
+        $calc = new Calculadora(2,3,"dividi");
+        $this->assertEquals(2/3, $calc->getResultado(), "Erro in getResultado method");
+
+        $calc = new Calculadora(4,0,"dividi");
+        $this->assertEquals('Não é um numero!', $calc->getResultado(), "Erro in getResultado method");
+
+        $calc = new Calculadora(6,3,"multiplica");
+        $this->assertEquals(18, $calc->getResultado(), "Erro in getResultado method"); 
+
+    }
 }

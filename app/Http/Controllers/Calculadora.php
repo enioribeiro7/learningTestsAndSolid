@@ -37,5 +37,24 @@ class Calculadora extends Controller
 
     public function getResultado(){
         
+        switch ($this->getOperador()) {
+            case 'soma':
+                return $this->valorA + $this->valorB;
+                break;
+            case 'subtrair':
+                return $this->valorA - $this->valorB;
+                break;
+            case 'dividi':
+                if($this->valorB == 0){
+                    return 'Não é um numero!';
+                }
+                return $this->valorA / $this->valorB;
+                break;
+            case 'multiplica':    
+                return $this->valorA * $this->valorB;
+                break;
+            default;
+            break;
+        }
     }    
 }
