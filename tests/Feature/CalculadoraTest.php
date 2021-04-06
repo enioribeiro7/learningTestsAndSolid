@@ -77,12 +77,20 @@ class CalculadoraTest extends TestCase
     /** 
      * @depends testAttributesOfContructMethod
      */
-    public function testGetResultadoMethod(){
+    public function testGetResultadoMethodSoma(){
         $calc = new Calculadora(4,2,"soma");
         $this->assertEquals(6, $calc->getResultado(), "Erro in getResultado method");
         
+
+
+    }
+
+    public function testGetResultadoMethodSubtrai(){
         $calc = new Calculadora(6,3,"subtrair");
         $this->assertEquals(3, $calc->getResultado(), "Erro in getResultado method");
+    }
+
+    public function testGetResultadoMethodDividi(){
 
         $calc = new Calculadora(6,3,"dividi");
         $this->assertEquals(2, $calc->getResultado(), "Erro in getResultado method");
@@ -92,10 +100,11 @@ class CalculadoraTest extends TestCase
 
         $calc = new Calculadora(4,0,"dividi");
         $this->assertEquals('Não é um numero!', $calc->getResultado(), "Erro in getResultado method");
+    }
 
+    public function testGetResultadoMethodMultiplica(){
         $calc = new Calculadora(6,3,"multiplica");
         $this->assertEquals(18, $calc->getResultado(), "Erro in getResultado method"); 
-
     }
 
     public function testStaticMethodCalcular(){
